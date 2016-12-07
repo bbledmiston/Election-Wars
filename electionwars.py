@@ -22,9 +22,12 @@ c.run campaign - loops throughg
 
 json file to create login data
 active plot graph to update polling data
+
+
 """
 
-class Player:
+
+class Player: #create player object and keep track of rating data
     def __init__(self,name):
         self.name = name
         self.rating = None
@@ -47,13 +50,6 @@ class Player:
         return self.name + ", Your rating is: " + str(self.rating)
 
 
-class Controller:
-    def __init__(self):
-        self.player = Player()
-
-
-
-
 class Events:
     def __init__(self):
         self.months = {}
@@ -63,28 +59,28 @@ class Events:
                 'Test question':
                 ('\na. +1\nb. -1\n', 1,-1)
                 }
-        self.august = {
+        self.months['august'] = {
                 'You accuse your opponent of wanting to abolish guns. Do you make a bad joke that can be interpreted as a call to violence?':
                 ('\na. Yes \nb. No\n', -1,1)
 
         }
 
-        self.september = {
+        self.months['september'] = {
                 'assuage the fears of minority voters?':
-                ('\na. Nah\nb. I don\'\t think so \n', -1,-1),
-                'you\'\re attending a congregation at a black church. you are asked to not give a political speech. do you...':
+                ('\na. Nah\nb. I don\'t think so \n', -1,-1),
+                'you\'re attending a congregation at a black church. you are asked to not give a political speech. do you...':
                 ('\n a. comply\nb. give the speech anyway',1,-1)
                 'You again accuse your opponent of wanting to abolish the second amendment. Do you make another incendiary joke?':
                 ('\na. No \nb. Hell yeah\n', 1,-1)
 
         }
 
-        self.october = {
+        self.months['october'] = {
                 'test question':
                 ('\na. Yes\nb. No\n', 1,-1)
         }
 
-        self.november = {
+        self.months['november'] = {
                 'Do you feel you are completely qualified to be the president of the United States of America?':
                 ('\na. Yes\nb. No\n',0,0),
                 'would you vote for you?':
