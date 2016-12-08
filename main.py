@@ -6,6 +6,7 @@ class Controller:
     def __init__(self):
         self.__mainWindow = tkinter.Tk()
         self.__mainWindow.title ('Controller')
+        self.__mainWindow.configure(bg='gray')
         self.top_frame = tkinter.Frame(self.__mainWindow)
         self.bottom_frame = tkinter.Frame(self.__mainWindow)
         self.questionList = ["You are the nominee of your party! What is the first thing you do?",
@@ -26,7 +27,13 @@ class Controller:
                         "A. Vehemently deny the allegations\nB. Vaguely threaten to deport the judge presiding over the case",
                         "A. Apologize for your comments\nB. Dismiss it as locker room talk"
                         ]
+        self.response_values = [[1, -1], [-1, 2], [3, 5], [4, -9], [1, 6], [-5, 2], [4,-5], [-3, 2]]
+        # self.questions = []
+        # self.questions.append(twoelectionwars.twoelectionwars(question, [responses], [ratings]))
         self.buttonpressed = False
+        self.rating = 50
+        self.a_value = 0
+        self.b_value = 0
         self.index = 0
         for i in range(len(self.questionList)):
             self.question = self.questionList[self.index]
@@ -36,11 +43,11 @@ class Controller:
 
             self.__button1 = tkinter.Button(self.__mainWindow, \
                                                 text="A", \
-                                                command=self.ratingcalc
+                                                command=self.buttonA
                                                 )
             self.__button2 = tkinter.Button(self.__mainWindow, \
                                                 text="B", \
-                                                command = self.callboth
+                                                command = self.buttonB
                                                 # command = self.buttonB
                                                 )
 
@@ -66,13 +73,17 @@ class Controller:
         tkinter.mainloop()
 
     def ratingcalc(self):
-        self.index +=  1
+        self.index += 1
         self.index = self.index % 8
         self.buttonpressed = True
         self.__label.config(text=self.questionList[self.index])
         self.__label2.config(text=self.choiceList[self.index])
+        self.a_value = self.response_values[self.index][0]
+        self.b_value = self.response_values[self.index][1]
         print(self.index)
         print(self.buttonpressed)
+        print(self.a_value)
+        print(self.b_value)
         # if self.__button1 == buttonpressed:
         #     print("1")
         # elif buttonpressed == self.__button2:
@@ -82,17 +93,25 @@ class Controller:
 
         # return self.index
     def buttonB(self):
-        print("-1")
-
-
-    def callboth(self):
+        self.rating += self.b_value
         self.ratingcalc()
-        self.buttonB()
+        print(self.rating)
+
+    def buttonA(self):
+        self.rating += self.a_value
+        self.ratingcalc()
+        print(self.rating)
 
 
-    def returnRatingA(self):
-            self.__q1 = twoelectionwars.twoelectionwars(0,self.question,"a. Nah","b. I don't think so",1,-1)
-            self.__q2 = twoelectionwars.twoelectionwars(1,self.question,"a. Yes","b. No",2,-2)
+    # def callboth(self):
+    #     self.ratingcalc()
+    #     self.buttonB()
+
+
+    # def returnRatingA(self):
+    #     self.
+    #         self.__q1 = twoelectionwars.twoelectionwars(0,self.question,"a. Nah","b. I don't think so",1,-1)
+    #         self.__q2 = twoelectionwars.twoelectionwars(1,self.question,"a. Yes","b. No",2,-2)
 
 
 
