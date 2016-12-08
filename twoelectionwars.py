@@ -1,3 +1,4 @@
+import tkinter
 
 class twoelectionwars:
     def __init__(self, qNumber, question, answer1, answer2, rating1, rating2):
@@ -8,13 +9,10 @@ class twoelectionwars:
         self.rating1 = rating1
         self.rating2 = rating2
 
-    def present(self):
-        question = self.question
-        print(str(self.answer1) + "\t" + str(self.answer2))
-        userInput = input("Enter a or b for answer: ")
-        if userInput == self.answer1:
+    def returnRating(self):
+        if button == self.answer1:
             adjust = rating1
-        elif userInput == self.answer2:
+        elif button == self.answer2:
             adjust = rating2
         return adjust
 

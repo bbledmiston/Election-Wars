@@ -8,15 +8,29 @@ class Controller:
         self.__mainWindow.title ('Controller')
         self.top_frame = tkinter.Frame(self.__mainWindow)
         self.bottom_frame = tkinter.Frame(self.__mainWindow)
-        self.questionList = ["a","b","c","d"]
-        self.choiceList = ["Choice A or Choice B","Choice C or Choice D","Choice A or Choice B","Choice C or Choice D"]
+        self.questionList = ["You are the nominee of your party! What is the first thing you do?",
+                            "The parents of a fallen soldier express concern about your proposed policies. Do you: ",
+                            "You are asked about your stance regarding alleged authoritarian leaders. You: ",
+                            "You are asked to release your tax returns. Do you: ",
+                            "You have been emphatically endorsed by white supremacist groups such as the KKK. How do you respond?",
+                            "You accuse your opponent of wanting to abolish the second amendment. Do you: ",
+                            "You are being sued for fraudulent business practices. It's not going your way. Do you: ",
+                            "A video was leaked in which you appear to be bragging about sexual assault. You: "
+                            ]
+        self.choiceList = ["A. Give a heartfelt, thankful speech \nB. Go on a Twitter rant",
+                        "A. Relieve the concerns or offer explanations\nB. Make assumptions that the mother was not allowed to speak because they are muslim",
+                        "A. Denounce their actions and their crimes against their people\nB. Praise Putin",
+                        "A. Go the traditional route and release them\nB. Refuse to release them",
+                        "A. Immediately disavow the KKK\nB. Dawdle and THEN disavow the KKK",
+                        "A. 'Jokingly' incite violence against your opponent\nB. Just trash your opponent",
+                        "A. Vehemently deny the allegations\nB. Vaguely threaten to deport the judge presiding over the case",
+                        "A. Apologize for your comments\nB. Dismiss it as locker room talk"
+                        ]
         self.buttonpressed = False
         self.index = 0
         for i in range(len(self.questionList)):
             self.question = self.questionList[self.index]
             self.choice = self.choiceList[self.index]
-            self.__test = twoelectionwars.twoelectionwars(0,self.question,"a. Nah","b. I don't think so",1,-1)
-            # print(self.__test.rating1)
             self.__label = tkinter.Label(self.top_frame, text=self.question)
             self.__label2 = tkinter.Label(self.bottom_frame, text=self.choice)
 
@@ -26,12 +40,13 @@ class Controller:
                                                 )
             self.__button2 = tkinter.Button(self.__mainWindow, \
                                                 text="B", \
-                                                command=self.ratingcalc
+                                                command = self.callboth
+                                                # command = self.buttonB
                                                 )
 
 
-        self.top_frame.pack() #frames have to be packed first
-        self.bottom_frame.pack()
+        self.top_frame.pack(padx=60, pady=40) #frames have to be packed first
+        self.bottom_frame.pack(padx=60, pady=40)
         self.__label.pack()
         self.__label2.pack()
         self.__button1.pack(side="left")
@@ -52,16 +67,37 @@ class Controller:
 
     def ratingcalc(self):
         self.index +=  1
-        self.index = self.index % 4
+        self.index = self.index % 8
         self.buttonpressed = True
         self.__label.config(text=self.questionList[self.index])
         self.__label2.config(text=self.choiceList[self.index])
         print(self.index)
         print(self.buttonpressed)
+        # if self.__button1 == buttonpressed:
+        #     print("1")
+        # elif buttonpressed == self.__button2:
+        #     print("-1")
+        # self.returnRating()
+        # print(returnRating)
 
         # return self.index
+    def buttonB(self):
+        print("-1")
+
+
+    def callboth(self):
+        self.ratingcalc()
+        self.buttonB()
+
+
+    def returnRatingA(self):
+            self.__q1 = twoelectionwars.twoelectionwars(0,self.question,"a. Nah","b. I don't think so",1,-1)
+            self.__q2 = twoelectionwars.twoelectionwars(1,self.question,"a. Yes","b. No",2,-2)
+
+
+
 
 def main():
     c = Controller()
-    print(c.ratingcalc())
+    # print(c.ratingcalc())
 main()
