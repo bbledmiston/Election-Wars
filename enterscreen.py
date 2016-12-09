@@ -18,7 +18,7 @@ class EnterScreen:
                                     text="Submit",\
                                     command=self.createUser())
 
-        
+
         self.__enterbutton.pack()
         self.__userlabel.pack(side="left")
         self.__usernameentry.pack()

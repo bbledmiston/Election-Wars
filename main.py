@@ -154,4 +154,12 @@ class Controller:
 def main():
     c = Controller()
 
+    #Play again function - Marleah
+    # playagain = 'yes'
+    # c = Controller()
+    # while playagain == 'yes':
+    #     Controller()
+    #     print('Do you want to play again? (yes or no)')
+    #     playagain = input()
+
 main()

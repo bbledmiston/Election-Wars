@@ -1,4 +1,6 @@
 import json
+
+#Json reading - Edwin
 def save():
     data= input('Please enter your name:')
     with open('save.json', 'w') as x:
