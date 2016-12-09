@@ -1,6 +1,7 @@
 import tkinter
 import json
-# import controller
+
+#Intended to create Json file that would have saved the username of the player based on what was entered into the entry widget
 
 class EnterScreen:
 
@@ -17,7 +18,7 @@ class EnterScreen:
                                     text="Submit",\
                                     command=self.createUser())
 
-        # self.__enterbutton.bind('<Return>', get)
+        
         self.__enterbutton.pack()
         self.__userlabel.pack(side="left")
         self.__usernameentry.pack()
@@ -25,7 +26,7 @@ class EnterScreen:
 
         # print(self.__username.get())
 
-        # tkinter.mainloop()
+        tkinter.mainloop()
 
     def createUser(self):
         print(self.__usernameentry.get())
@@ -38,5 +39,5 @@ class EnterScreen:
 
 def main():
     e = EnterScreen()
-    tkinter.mainloop()
+
 main()
